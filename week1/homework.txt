@@ -1,0 +1,22 @@
+Homework 1 -- CSS 605 -- Fall 2011
+
+1. Install NetBeans 
+
+2. Write a "Hello, World" program FROM SCRATCH
+
+(you are not allowed to cut and paste from anywhere)
+
+3. Get it to run
+
+4. Create a personal GitHub repository
+
+5. Read GitHub documentation and learn Git basics
+
+6. Create an hw1 folder in your repository and check in your program
+
+7. Invite me (maksim2042) to look at it. 
+
+ONCE YOU ARE DONE (and especially if you are done in 10 minutes):
+
+8. Post on Facebook an offer to help anyone who is struggling. 
+
