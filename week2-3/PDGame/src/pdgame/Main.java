@@ -16,7 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Judge dredd =new Judge(new RandomPlayer(), new RandomPlayer(), 10);
+        Judge dredd =new Judge(new RandomPlayer(), new T4TPlayer(), 10);
     }
 
 }
