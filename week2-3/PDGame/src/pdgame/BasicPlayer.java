@@ -18,7 +18,7 @@ public abstract class BasicPlayer implements Player {
         myID="Basic Player";
     }
 
-    public BasicPlayer(String id) {
+    public void setID(String id) {
         myID=id;
     }
 
@@ -29,6 +29,10 @@ public abstract class BasicPlayer implements Player {
     public void setScore(int myMove, int oppMove, int myScore, int oppScore, String oppID) {
        totalScore+=myScore;
        System.out.println("Score"+myScore+" over "+oppScore+" My total: "+totalScore);
+    }
+
+    public String toString() {
+        return(myID+" "+ totalScore);
     }
 
 }

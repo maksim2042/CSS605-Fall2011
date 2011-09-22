@@ -12,6 +12,9 @@ package pdgame;
 public class T4TPlayer extends BasicPlayer {
 
     int oppLastMove=GameMove.COOPERATE;
+    public T4TPlayer() {
+        myID="T4T Player";
+    }
 
     public int makeMove() {
         if (oppLastMove==GameMove.COOPERATE)

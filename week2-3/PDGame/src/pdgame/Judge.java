@@ -11,7 +11,14 @@ package pdgame;
  */
 public class Judge {
 
-    public Judge(Player p1, Player p2, int rounds) {
+    public Judge() {
+    }
+    
+    
+    public void playMatch(Player p1, Player p2, int rounds){
+
+        //TODO: Add Scorekeeping
+
         for (int i=0;i<rounds;i++) { //i++ means i=i+1
             playRound(p1,p2);
         }
