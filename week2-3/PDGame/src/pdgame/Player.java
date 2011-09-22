@@ -10,7 +10,8 @@ package pdgame;
  * @author maksim
  */
 public interface Player {
+    String getID();
     int makeMove();
-    void setScore(int myMove, int oppMove, int myScore, int oppScore);
+    void setScore(int myMove, int oppMove, int myScore, int oppScore, String oppID);
 
 }

@@ -12,18 +12,16 @@ import java.util.Random;
  *
  * @author maksim
  */
-public class RandomPlayer implements Player {
+public class RandomPlayer extends BasicPlayer {
     
-    int totalScore=0;
-
     public int makeMove() {
         Random r=new Random();
-        return(r.nextInt(2)); //Return an integer 0 or 1
-    }
 
-    public void setScore(int myMove, int oppMove, int myScore, int oppScore) {
-        totalScore+=myScore;
-        System.out.println("Score"+myScore+" over "+oppScore+" My total: "+totalScore);
-    }
+        if (r.nextFloat()>=0.5)
+            return GameMove.DEFECT;
+        else
+            return GameMove.COOPERATE;
+        }
+
 
 }

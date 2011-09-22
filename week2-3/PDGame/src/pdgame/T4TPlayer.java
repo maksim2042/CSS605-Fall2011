@@ -9,22 +9,21 @@ package pdgame;
  *
  * @author maksim
  */
-public class T4TPlayer implements Player {
+public class T4TPlayer extends BasicPlayer {
 
-    int totalScore=0;
-    int oppLastMove=1;
+    int oppLastMove=GameMove.COOPERATE;
 
     public int makeMove() {
-        if (oppLastMove==1)
-                return 1;
+        if (oppLastMove==GameMove.COOPERATE)
+                return GameMove.COOPERATE;
         else
-                return 0;
+                return GameMove.DEFECT;
     }
 
-    public void setScore(int myMove, int oppMove, int myScore, int oppScore) {
+    @Override
+    public void setScore(int myMove, int oppMove, int myScore, int oppScore, String oppID) {
         oppLastMove=oppMove;
-        totalScore+=myScore;
-        System.out.println("Score"+myScore+" over "+oppScore+" My total: "+totalScore);
+        super.setScore(myMove,oppMove,myScore,oppScore,oppID);
     }
 
 
