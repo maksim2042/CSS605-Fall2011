@@ -56,12 +56,7 @@ is divided into following sections:
                 <escapeunicode/>
             </filterchain>
         </loadproperties>
-        <loadproperties encoding="ISO-8859-1" srcfile="${libraries.1.path}">
-            <filterchain>
-                <replacestring from="$${base}" to="${libraries.1.dir}"/>
-                <escapeunicode/>
-            </filterchain>
-        </loadproperties>
+
     </target>
     <target depends="-pre-init,-init-private,-init-libraries" name="-init-user">
         <property file="${user.properties.file}"/>
