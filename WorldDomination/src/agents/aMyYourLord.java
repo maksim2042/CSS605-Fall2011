@@ -141,6 +141,11 @@ public class aMyYourLord extends Agent{
     @Override
     protected void battleOutcome(long period, int attackerID, double soldiersAttack,
             int deffenderID, double soldiersDefend, boolean youWon){
+
+        System.out.println(String.valueOf(period)+" "+
+                String.valueOf(attackerID)+" " +
+                String.valueOf(deffenderID)+" "+
+                String.valueOf(youWon));
         // This method provides information about the outcome of the battle, so I will leave this open to you,
         // to do whatever you want to do with the info.
 

@@ -1,0 +1,2 @@
+agents.BattleOutcome
+agents.MilitaryHistory

@@ -54,6 +54,12 @@ public class Agent {
             break;
             case 7: rulerColor = Color.orange;
             break;
+            case 8: rulerColor = Color.MAGENTA;
+            break;
+            case 9: rulerColor = Color.CYAN;
+            break;
+            case 10: rulerColor = Color.LIGHT_GRAY;
+            break;
         }
     }
     

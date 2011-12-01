@@ -30,7 +30,7 @@ public class WarProtocol {
             double attackIntensity = attacker.getRuler().attackingSoldiers;
             int attackedTerritoryID = attacker.getRuler().attackedTerritoryID;
             // Check that the amount of soldiers attacking is coherent with the stock of soldiers in the territory
-            if(attackIntensity<=0 || attackedTerritoryID>=territories.numObjs ||
+            if(attackIntensity<=0 || attackedTerritoryID>territories.numObjs ||
                     attackedTerritoryID<=0 || attackIntensity>attacker.getSoldiers()){
                 continue;
             }

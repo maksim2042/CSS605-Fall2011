@@ -46,32 +46,45 @@ public class Imperial extends SimState{
         for (int i=0; i<42; i++){
             territories.add(new Territory(i+1, rand.nextDouble()*5, rand.nextDouble()*5, rand.nextDouble()));
         }
+
+
+        /// To every territory, assign an agent randomly, making sure there are
+        /// exactly 6 territories assigned to every agent class
         for (int i=0; i<42; i++){
-            if(i<6){
-                Agent ruler = new Catenaccio(i+1, 1);
+            if(i<4){
+                Agent ruler = new Rice(i+1, 1);
                 lords.add(ruler);
-            }
-            else if(i<12){
-                Agent ruler = new ChuckNorris(i+1, 2);
+            }else if(i<8){
+                Agent ruler = new chameleon(i+1, 2);
                 lords.add(ruler);
-            }else if(i<18){
-                Agent ruler = new Guevara(i+1, 3);
+            }else if(i<12){
+                Agent ruler = new Surprise2(i+1, 3);
+                lords.add(ruler);
+            }else if(i<16){
+                Agent ruler = new K(i+1, 4);
+                lords.add(ruler);
+            }else if(i<20){
+                Agent ruler = new Evolver(i+1, 5);
                 lords.add(ruler);
             }else if(i<24){
-                Agent ruler = new Borg(i+1, 4);
+                Agent ruler = new SidneyCrosby(i+1, 6);
                 lords.add(ruler);
-            }else if(i<30){
-                Agent ruler = new ItsGoodToBeTheKing(i+1, 5);
+            }else if(i<28){
+                Agent ruler = new WinWithEconAndWAR(i+1, 7);
+                lords.add(ruler);
+            }else if(i<32){
+                Agent ruler = new Citizen(i+1, 8);
                 lords.add(ruler);
             }else if(i<36){
-                Agent ruler = new Calvin(i+1, 6);
+                Agent ruler = new DoctorNo(i+1, 9);
                 lords.add(ruler);
             }else if(i<42){
-                Agent ruler = new SWMBO(i+1, 7);
+                Agent ruler = new CuriousGeorge(i+1, 10);
                 lords.add(ruler);
             }
         }
 
+        // Initialize lists of neighbors for every agent
         for (int i=0; i<lords.numObjs; i++){
             int assign = rand.nextInt(42);
                 while (((Territory)territories.get(assign)).getRuler() != null){
@@ -86,6 +99,7 @@ public class Imperial extends SimState{
         mapMaker.randomColors(territories, countries);
         schedule.scheduleRepeating(turns);
 
+        // Colorize the map
         colorsBag = new Bag();
         for (int i=0; i<territories.numObjs; i++){
             Territory territory = (Territory)territories.get(i);
@@ -109,8 +123,10 @@ public class Imperial extends SimState{
         public void step(SimState state){
             // Shuffle the list of territories so that the lords' activation order is random
             territories.shuffle(rand);
+
             for(int i=0; i<territories.numObjs; i++){
                 Territory territory = (Territory)territories.get(i);
+
                 // Calls the lord to update the tax rate
                 territory.getRuler().chooseTax();
                 // Enforces the tax paymentsfor all lords

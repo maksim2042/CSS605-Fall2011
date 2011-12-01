@@ -58,6 +58,9 @@ public class ImperialWithUI extends GUIState{
     TimeSeries E4;
     TimeSeries E5;
     TimeSeries E6;
+    TimeSeries E7;
+    TimeSeries E8;
+    TimeSeries E9;
     private Color[] colorsMap = new Color[]{
         Color.white,
         Color.black,
@@ -78,17 +81,22 @@ public class ImperialWithUI extends GUIState{
     private DataWriter dataWriter;
 
     private CategoryDataset createDataset(String label) {
-        String name0 = (new Catenaccio(2,2)).getName();
-        String name1 = (new ChuckNorris(2,2)).getName();
-        String name2 = (new Guevara(2,2)).getName();
-        String name3 = (new Borg(2,2)).getName();
-        String name4 = (new ItsGoodToBeTheKing(2,2)).getName();
-        String name5 = (new Calvin(2,2)).getName();
-        String name6 = (new SWMBO(2,2)).getName();
+        String name0 = (new Rice(2,2)).getName();
+        String name1 = (new chameleon(2,2)).getName();
+        String name2 = (new Surprise2(2,2)).getName();
+        String name3 = (new K(2,2)).getName();
+        String name4 = (new Evolver(2,2)).getName();
+        String name5 = (new SidneyCrosby(2,2)).getName();
+        String name6 = (new WinWithEconAndWAR(2,2)).getName();
+        String name7 = (new Citizen(2,2)).getName();
+        String name8 = (new DoctorNo(2,2)).getName();
+        String name9 = (new CuriousGeorge(2,2)).getName();
+
+
         String[] size = new String[]{label};
-        String[] names = new String[]{name0,name1,name2,name3,name4,name5,name6};
+        String[] names = new String[]{name0,name1,name2,name3,name4,name5,name6,name7,name8,name9};
         dataWriter = new DataWriter(names);
-        final double[][] data = new double[][] {{0,0,0,0,0,0,0}};
+        final double[][] data = new double[][] {{0,0,0,0,0,0,0,0,0,0}};
         return DatasetUtilities.createCategoryDataset(
             size,
             names,
@@ -97,13 +105,18 @@ public class ImperialWithUI extends GUIState{
     }
 
     private XYDataset createSeriesDataset() {
-        E0 = new TimeSeries((new Catenaccio(2,2)).getName());
-        E1 = new TimeSeries((new ChuckNorris(2,2)).getName());
-        E2 = new TimeSeries((new Guevara(2,2)).getName());
-        E3 = new TimeSeries((new Borg(2,2)).getName());
-        E4 = new TimeSeries((new ItsGoodToBeTheKing(2,2)).getName());
-        E5 = new TimeSeries((new Calvin(2,2)).getName());
-        E6 = new TimeSeries((new SWMBO(2,2)).getName());
+        E0 = new TimeSeries((new Rice(2,2)).getName());
+        E1 = new TimeSeries((new chameleon(2,2)).getName());
+        E2 = new TimeSeries((new Surprise2(2,2)).getName());
+        E3 = new TimeSeries((new K(2,2)).getName());
+        E4 = new TimeSeries((new Evolver(2,2)).getName());
+        E5 = new TimeSeries((new SidneyCrosby(2,2)).getName());
+        E6 = new TimeSeries((new WinWithEconAndWAR(2,2)).getName());
+        E7 = new TimeSeries((new Citizen(2,2)).getName());
+        E8 = new TimeSeries((new DoctorNo(2,2)).getName());
+        E9 = new TimeSeries((new CuriousGeorge(2,2)).getName());
+
+
         final TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.addSeries(E0);
         dataset.addSeries(E1);
@@ -112,6 +125,9 @@ public class ImperialWithUI extends GUIState{
         dataset.addSeries(E4);
         dataset.addSeries(E5);
         dataset.addSeries(E6);
+        dataset.addSeries(E7);
+        dataset.addSeries(E8);
+        dataset.addSeries(E9);
         return dataset;
     }
 
@@ -171,6 +187,9 @@ public class ImperialWithUI extends GUIState{
         E4.clear();
         E5.clear();
         E6.clear();
+        E7.clear();
+        E8.clear();
+        E9.clear();
         period = new Day();
 
         Steppable timeSeriesUpdater = new Steppable() {
@@ -182,6 +201,9 @@ public class ImperialWithUI extends GUIState{
                 double size4 = 0;
                 double size5 = 0;
                 double size6 = 0;
+                double size7 = 0;
+                double size8 = 0;
+                double size9 = 0;
 
                 for(int i=0; i<risk.territories.numObjs; i++){
                     Territory territory = (Territory)risk.territories.get(i);
@@ -200,6 +222,12 @@ public class ImperialWithUI extends GUIState{
                         size5++;
                     if(type==7 && territory.getSuperior()==null)
                         size6++;
+                    if(type==8 && territory.getSuperior()==null)
+                        size7++;
+                    if(type==9 && territory.getSuperior()==null)
+                        size8++;
+                    if(type==10 && territory.getSuperior()==null)
+                        size9++;
                 }
 
                 for(int i=0; i<risk.territories.numObjs; i++){
@@ -221,6 +249,12 @@ public class ImperialWithUI extends GUIState{
                             break;
                         case 7:size6 += territory.getConquered().numObjs;
                             break;
+                        case 8:size6 += territory.getConquered().numObjs;
+                            break;
+                        case 9:size6 += territory.getConquered().numObjs;
+                            break;
+                        case 10:size6 += territory.getConquered().numObjs;
+                            break;
                     }
                 }
                 E0.add(period, size0);
@@ -230,6 +264,10 @@ public class ImperialWithUI extends GUIState{
                 E4.add(period, size4);
                 E5.add(period, size5);
                 E6.add(period, size6);
+                E7.add(period, size7);
+                E8.add(period, size8);
+                E9.add(period, size9);
+
                 period = (Day)period.next();
             }
         };
@@ -237,7 +275,7 @@ public class ImperialWithUI extends GUIState{
 
         Steppable barsUpdater = new Steppable() {
             public void step(SimState state) {
-                double[] types = new double[7];
+                double[] types = new double[10];
                 for(int i=0; i<types.length; i++){
                     types[i]=6;
                 }
@@ -273,7 +311,7 @@ public class ImperialWithUI extends GUIState{
 
         Steppable influencesUpdater = new Steppable() {
             public void step(SimState state) {
-                double[] types = new double[7];
+                double[] types = new double[10];
                 for(int i=0; i<risk.territories.numObjs; i++){
                     Territory territory = (Territory)risk.territories.get(i);
                     if(territory.countSameSuperiors(territory.getType())==0){
@@ -299,7 +337,7 @@ public class ImperialWithUI extends GUIState{
 
         Steppable wealthUpdater = new Steppable() {
             public void step(SimState state) {
-                double[] types = new double[7];
+                double[] types = new double[10];
                 for(int i=0; i<risk.territories.numObjs; i++){
                     Territory territory = (Territory)risk.territories.get(i);
                     types[territory.getType()-1] += (territory.getSoldiers()+
