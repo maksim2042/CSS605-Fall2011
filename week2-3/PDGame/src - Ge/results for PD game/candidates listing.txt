@@ -1,0 +1,5 @@
+candidate number:0           ID:a                 strategy code:random
+candidate number:1           ID:b                 strategy code:always antagonistic
+candidate number:2           ID:c                 strategy code:always cooperative
+candidate number:3           ID:d                 strategy code:tit for tat
+candidate number:4           ID:e                 strategy code:G
